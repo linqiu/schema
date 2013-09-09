@@ -1,3 +1,5 @@
+var mysql = require('mysql');
+
 module.exports = function(app) {
     var _this = this;
     
@@ -12,9 +14,8 @@ module.exports = function(app) {
     this.parse_type = function(type_id) {
         // Figure out type:
         for (var type in mysql.Types) {
-            var key = mysql.Types[type];
             
-            if (type_id == key) {
+            if (type_id == mysql.Types[type]) {
                 return type;
             }
         }
@@ -40,7 +41,7 @@ module.exports = function(app) {
         app.database.makeDBConnection(hostname, username, password, port, function (token) {
             if (token) {
                 _this.return_json(res, {
-                    token: token,
+                    token: token
                 });
             } else {
                 _this.return_json(res, {
