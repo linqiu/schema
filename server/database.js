@@ -43,6 +43,7 @@ module.exports = {
         // Create connection:
         app.user_connections[token] = mysql.createConnection({
             host: hostname,
+            port: port,
             user: username,
             password: password
         });

@@ -3,5 +3,9 @@ npm-debug.log
 client/views/built/templates.html
 client/bower_components/
 
+# IDE-specific project files
+*.iml
+.idea/
+
 # CSS should always be built from LESS:
 *.css
