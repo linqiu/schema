@@ -5,10 +5,7 @@
  */
 module.exports = function(app) {
     return function() {
-        var i = 0;
-        for (inc in app.user_connections) {
-            i++;
-        }
+        var i = Object.keys(app.user_connections).length;
         
         console.log("There are " + i + " active database connections.");
     }

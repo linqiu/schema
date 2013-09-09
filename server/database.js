@@ -1,4 +1,4 @@
-mysql = require('mysql');
+var mysql = require('mysql');
 
 module.exports = {
     /**
@@ -39,7 +39,7 @@ module.exports = {
     makeDBConnection: function (hostname, username, password, port, callback) {
         // Generate unique token:
         var token = this.getUniqueIDAgainstCollection(app.user_connections);
-        
+
         // Create connection:
         app.user_connections[token] = mysql.createConnection({
             host: hostname,
@@ -51,9 +51,9 @@ module.exports = {
         // Connect and fire callback:
         app.user_connections[token].connect(function(err) {
             if (err) {
-                callback(false);
+                token = false;
+                // todo -- on error cleanup
             }
-            
             callback(token);
         });
     },
@@ -128,5 +128,5 @@ module.exports = {
                 callback(rows[0].Value);
             }
         });
-    },
+    }
 }

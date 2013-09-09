@@ -23,7 +23,7 @@ module.exports = {
         // Get all templates in directory:
         glob("client/views/templates/*.html", {}, function (err, files) {
             if (err) {
-                return;
+                return console.log("glob templates error: ", err);
             }
             
             // Define file counter and empty text variable:
